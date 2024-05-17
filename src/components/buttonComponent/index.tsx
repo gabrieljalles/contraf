@@ -1,17 +1,19 @@
 import { Text, TouchableOpacity } from 'react-native';
 import styles from './style';
-import LinearGradient from 'react-native-linear-gradient';
-
+import { LinearGradient } from 'expo-linear-gradient';
 interface props{
     buttonName: string
+    lightColor: string
+    darkColor: string
 }
 
 
-const ButtonComponent = ({buttonName}:props) =>{
+const ButtonComponent = ({buttonName, lightColor, darkColor}:props) =>{
+
     return(
         <TouchableOpacity style={styles.buttonContainer}>
             <LinearGradient
-              colors={['#1A60E8', '#0F3682']}
+              colors={[`${lightColor}`,`${darkColor}`]}
               start={{ x: 0, y: 1 }}
               end={{ x: 1, y: 1 }}
               style={styles.gradientButton}
