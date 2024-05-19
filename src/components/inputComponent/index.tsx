@@ -1,20 +1,26 @@
-import { View, TextInput } from 'react-native';
+import { View, TextInput, TextInputProps, Text } from 'react-native';
 import styles from './style';
 import { FontAwesome} from '@expo/vector-icons';
-import React from 'react';
+import React, { useState } from 'react';
 import Entypo from '@expo/vector-icons/Entypo';
 
-interface Props{
+interface GenericInputProps extends TextInputProps{
     placeholder: string
     color: string
-    iconImage?: 'user' | 'lock'
+    iconImage?: 'user' | 'lock' | 'drivers-license-o' | 'mobile'
     size: 20|24|32
+    value: string
+    typePass?: boolean
+    inputFocused: {[key: string]: boolean}
 }
 
-const InputComponent = ({placeholder, color, iconImage, size}: Props) =>{
-    
+
+const InputComponent = ({id,inputFocused,value, onChangeText, onFocus, onBlur, placeholder, color, iconImage, size, typePass=false}: GenericInputProps) => {
+      
+    const isInputFocused = inputFocused[typeof id === 'string' ? id : ''] || false;
+
     return(
-        <View style={styles.inputContainer}>
+        <View style={[styles.inputContainer, isInputFocused && styles.focused]}>
             <FontAwesome 
             size={size} 
             name={iconImage} 
@@ -22,7 +28,17 @@ const InputComponent = ({placeholder, color, iconImage, size}: Props) =>{
             color={color} 
             />
             <View style={styles.inputTextContainer}>
-              <TextInput style={styles.inputText} placeholder={placeholder} placeholderTextColor="#ccc" underlineColorAndroid="transparent"/>
+              <TextInput
+              value={value} 
+              onChangeText={onChangeText}
+              style={styles.inputText} 
+              placeholder={placeholder} 
+              placeholderTextColor="#ccc" 
+              underlineColorAndroid="transparent"
+              secureTextEntry = {typePass}
+              onFocus={onFocus}
+              onBlur={onBlur}
+              />
             </View>
           </View>
     )

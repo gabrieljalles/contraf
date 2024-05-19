@@ -11,9 +11,12 @@ const styles = StyleSheet.create({
         height:40,
     
         borderBottomWidth: 3,
-        borderBottomColor: '#fff',
         borderRadius: 1,
         marginBottom: 25,
+        borderBottomColor:'#fff',
+      },
+      focused:{
+        borderBottomColor:'#f5ce05', 
       },
       icon:{
         width:'10%',
@@ -27,7 +30,6 @@ const styles = StyleSheet.create({
       },
       inputText:{
         fontSize:16,
-        fontWeight: '600',
         color: '#fff',
         textAlign: 'center',
       }
