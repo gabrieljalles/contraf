@@ -11,16 +11,14 @@ interface GenericInputProps extends TextInputProps{
     size: 20|24|32
     value: string
     typePass?: boolean
-    inputFocused: {[key: string]: boolean}
 }
 
 
-const InputComponent = ({id,inputFocused,value, onChangeText, onFocus, onBlur, placeholder, color, iconImage, size, typePass=false}: GenericInputProps) => {
-      
-    const isInputFocused = inputFocused[typeof id === 'string' ? id : ''] || false;
+const InputComponent = ({value, onChangeText, onFocus, onBlur, placeholder, color, iconImage, size, typePass=false}: GenericInputProps) => {
+
 
     return(
-        <View style={[styles.inputContainer, isInputFocused && styles.focused]}>
+        <View style={[styles.inputContainer]}>
             <FontAwesome 
             size={size} 
             name={iconImage} 

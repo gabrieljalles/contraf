@@ -1,6 +1,7 @@
 import { Text, TouchableOpacity } from 'react-native';
 import styles from './style';
 import { LinearGradient } from 'expo-linear-gradient';
+
 interface props{
     buttonName: string
     lightColor: string

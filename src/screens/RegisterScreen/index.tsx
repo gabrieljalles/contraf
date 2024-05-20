@@ -22,16 +22,8 @@ const RegisterScreen = ({navigation}:RegisterScreenProps) => {
   const [passwordValue,setPasswordValue] = useState('')
   const [rePasswordValue,setRePasswordValue] = useState('')
   const [cellphoneValue,setCellphoneValue] = useState('')
-  const [inputFocused, setInputFocused] = useState<{ [key: string]: boolean }>({});
+ 
   
-  const handleFocus = (id: string) =>{
-    setInputFocused({ ...inputFocused, [id]: true });
-  }
-
-  const handleBlur = (id: string) =>{
-    setInputFocused({ ...inputFocused, [id]: false });
-  }
-
   const handleUserChange= (text: string) =>{
     setUserValue(text)
   }
@@ -73,8 +65,8 @@ const RegisterScreen = ({navigation}:RegisterScreenProps) => {
           style={styles.background}
           >
 
-            <InputComponent id='user' inputFocused={inputFocused}  onFocus={()=> handleFocus('user')} onBlur={()=> handleFocus('user')} value={userValue} onChangeText={handleUserChange} placeholder="Digite sua usuario" iconImage='user'  color='white' size={24}/>
-            <InputComponent id='cellphone' inputFocused={inputFocused}  onFocus={()=> handleFocus('cellphone')} onBlur={()=> handleFocus('cellphone')} value={cellphoneValue} onChangeText={handleCellphoneChange} placeholder="34991234567" iconImage='mobile'  color='white' size={24}/>
+            <InputComponent value={userValue} onChangeText={handleUserChange} placeholder="Digite sua usuario" iconImage='user'  color='white' size={24}/>
+            <InputComponent value={cellphoneValue} onChangeText={handleCellphoneChange} placeholder="34991234567" iconImage='mobile'  color='white' size={24}/>
             {/* <InputComponent id='{inputId}' onFocus={handleFocus} onBlur={handleBlur} value={passwordValue} onChangeText={handlePasswordChange} placeholder="Digite sua senha" iconImage='lock'  color='white' size={24} typePass={true}/>
             <InputComponent id='id' onFocus={handleFocus} onBlur={handleBlur} value={rePasswordValue} onChangeText={handleRePasswordChange} placeholder="senha novamente" iconImage='lock'  color='white' size={24} typePass={true}/>
           
